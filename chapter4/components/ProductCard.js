@@ -8,17 +8,18 @@ import {
 } from "react-native";
 
 import { FontAwesome as Icon } from "@expo/vector-icons";
+import Rating from "./Rating";
 
 const ProductCard = ({ data }) => {
   return (
     <>
-      <View className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <View className="max-w-sm mb-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Text className="flex ">
           <Image
             className="rounded-t-lg object-cover h-48  min-w-full max-w-full "
             source={{
               //uri: "https://flowbite.com/docs/images/blog/image-1.jpg",
-              uri: data.image,
+              uri: data.imageUrl,
             }}
           />
         </Text>
@@ -27,7 +28,7 @@ const ProductCard = ({ data }) => {
             {data.productName}
           </Text>
           <Text className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {data.releaseDate}
+            {data.releasedDate}
           </Text>
           <Text className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {data.description}
@@ -38,6 +39,7 @@ const ProductCard = ({ data }) => {
               <Icon name="arrow-right" size={12} />
             </Text>
           </Text>
+          <Rating rating={data.rating} />
         </View>
       </View>
     </>
