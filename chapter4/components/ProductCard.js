@@ -11,6 +11,13 @@ import { FontAwesome as Icon } from "@expo/vector-icons";
 import Rating from "./Rating";
 
 const ProductCard = ({ data }) => {
+
+  const [canVote, setCanVote] = useState(false);
+
+  const vote = () => {
+    setCanVote(!canVote)
+  }
+
   return (
     <>
       <View className="max-w-sm mb-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -33,13 +40,19 @@ const ProductCard = ({ data }) => {
           <Text className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {data.description}
           </Text>
-          <Text className="inline-flex items-center py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <Text className="mx-20"> Votar aqui</Text>
-            <Text>
-              <Icon name="arrow-right" size={12} />
+          <TouchableWithoutFeedback onPress={() => vote()}>
+            <Text className="inline-flex items-center py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <Text className="mx-20"> Votar aqui</Text>
+              <Text>
+                <Icon name="arrow-right" size={12} />
+              </Text>
             </Text>
+          </TouchableWithoutFeedback>
+          <Text className={!canVote && 'hidden'} >
+
+            <Rating rating={data.rating} />
+
           </Text>
-          <Rating rating={data.rating} />
         </View>
       </View>
     </>
