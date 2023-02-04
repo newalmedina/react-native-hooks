@@ -2,6 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, Text, View } from "react-native";
 import ProductCard from "./components/ProductCard";
+import Children from "./components/Children";
 
 export default function App() {
   const title = "App Chapter 5";
@@ -50,7 +51,13 @@ export default function App() {
         </Text>
       </View>
       <ScrollView className="flex-1 container  px-7 pt-5">
-        {productList}
+        <Children>
+          Este contenido se introdujo con Prop children
+        </Children>
+        {products().length >= 1
+          ? productList
+          : <Text className="py-2">No hay resultados o productos para mostrar</Text>
+        }
       </ScrollView>
       <StatusBar style="auto" />
     </>
