@@ -15,7 +15,7 @@ const GitHub = () => {
                 // manejar respuesta exitosa
                 setData(response.data.items)
                 setLoading(false)
-                console.log(data.length)
+
             })
     }
 
